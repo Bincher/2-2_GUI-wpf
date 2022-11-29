@@ -6,15 +6,19 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="MAIN" Height="400" Width="800" Loaded="Window_Loaded">
-    <Grid Background="White" Loaded="Grid_Loaded">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="169*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="myBtn" Content="New Window" Margin="10,137,0,0" Height="99" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85" Click="myBtn_Click" Grid.Column="2"/>
-        <Frame x:Name="myFrame" Grid.Column="3" Content="Frame" Margin="34,40,34,39" Source="/Page1.xaml"/>
-
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="This is a TextBlock" />
+        <TextBox Text="안녕하세요" />
+        <ProgressBar Value ="90" Height="20"/>
+        <Image Source="images/image.png" Height="200"/>
+        <Button Padding="10" Width="200" Height ="200">
+            <Image Source="images/image.png" Width="250" Height="200"/>
+        </Button>
+        <ScrollViewer Height="300" Width="300" HorizontalScrollBarVisibility="Auto">
+            <Image Source="images/image.png" Stretch="None"/>
+        </ScrollViewer>
+        <Viewbox Stretch="Fill" Height="200" Width="300">
+            <Button Content="A"/>
+        </Viewbox>
+    </StackPanel>
 </Window>

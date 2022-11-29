@@ -28,19 +28,6 @@ namespace WpfApp
            
         }
 
-        private void myBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Uri page = new Uri(@"page1.xaml", UriKind.RelativeOrAbsolute);
-            //myFrame.Source = page;4
-            myFrame.NavigationService.Navigate(page);
-           // myFrame.NavigationUIVisibility = "Hidden";
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             blackWnd = new Window1();

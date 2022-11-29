@@ -20,31 +20,32 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        Window1 blackWnd;
         public MainWindow()
         {
             InitializeComponent();
+
+           
         }
 
         private void myBtn_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Hello, WPF");
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-
-            //var uri = new System.Uri("C:\\Users\\seongbin\\source\\repos\\WpfApp\\WpfApp\\image.png", UriKind.Absolute);
-            var uri = new System.Uri(@"images\image.png", UriKind.RelativeOrAbsolute);
-            bitmap.UriSource = uri;
-            bitmap.EndInit();
-
-            image1.Source = bitmap;
+            Uri page = new Uri(@"page1.xaml", UriKind.RelativeOrAbsolute);
+            //myFrame.Source = page;4
+            myFrame.NavigationService.Navigate(page);
+           // myFrame.NavigationUIVisibility = "Hidden";
         }
 
-        private void image1_MouseMove(object sender, MouseEventArgs e)
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            //Point pos = e.GetPosition(this);
-            Point pos = Mouse.GetPosition(image1);
-            String strPos = String.Format("{0,10:f} {1,10:f}", pos.X, pos.Y);
-            tbPos.Text = strPos;
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            blackWnd = new Window1();
+            blackWnd.Owner = this;
+            blackWnd.Show();    
         }
     }
 }

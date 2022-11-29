@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp
 {
@@ -20,19 +21,41 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        Window1 blackWnd;
+        int counter = 0;
+        DispatcherTimer Timer = new DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
 
+            Timer.Interval = TimeSpan.FromMilliseconds(1000);
+            Timer.Tick += new EventHandler(timer_Tick);
            
         }
-
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            counter++;
+            lbCnt.Content = String.Format("{0}", counter);
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            blackWnd = new Window1();
-            blackWnd.Owner = this;
-            blackWnd.Show();    
+              
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.Start();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Timer.Stop();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Timer.Stop();
+            counter = 0;
+            lbCnt.Content = String.Format("{0}", counter);
         }
     }
 }
